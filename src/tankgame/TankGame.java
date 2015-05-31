@@ -39,18 +39,18 @@ import javafx.util.Duration;
 
 public class TankGame extends Application{
     
-    private final static int WIDTH = 800;
-    private final static int HEIGHT = 600;    
-    private final static Image BACKGROUND_IMAGE = new Image(TankGame.class.getResource("imgs/Tank_back.png").toString()); // vytvoří se img + načte se ze souboru
-    private final static Image PATRONA = new Image(TankGame.class.getResource("imgs/Tank_patrona.png").toString()); // vytvoří se img + načte se ze souboru
-    private final static Image PATRONA_PROTIVNIKA = new Image(TankGame.class.getResource("imgs/Tank_patrona.png").toString()); // vytvoří se img + načte se ze souboru
+    private final int WIDTH = 800;
+    private final int HEIGHT = 600;    
+    private final Image BACKGROUND_IMAGE = new Image(TankGame.class.getResource("imgs/Tank_back.png").toString()); // vytvoří se img + načte se ze souboru
+    private final Image PATRONA = new Image(TankGame.class.getResource("imgs/Tank_patrona.png").toString()); // vytvoří se img + načte se ze souboru
+    private final Image PATRONA_PROTIVNIKA = new Image(TankGame.class.getResource("imgs/Tank_patrona.png").toString()); // vytvoří se img + načte se ze souboru
     private Animation modelAnimacePatrony, modelAnimaceKruhu, modelAnimacePatronyProtivnika, modelAnimaceKruhuProtivnika;
     private Group patrona,patronaProtivnika;
     private double smerStrelyX, smerStrelyY, smerStrelyXSouperX, smerStrelyXSouperY;
     private final Otaceni otaceni = new Otaceni();
-    private final TankHrac tankHrac = new TankHrac();
+    private final TankHrac tankHrac = new TankHrac("imgs/Tank_model.png");
     private final AI ai = new AI();
-    private final TankProtivnik tankProtivnik = new TankProtivnik();
+    private final TankHrac tankProtivnik = new TankHrac("imgs/Tank_model2.png");
     private boolean nastalaKolize = false;
     private final Random r = new Random();
     private double aiTankProtivnik;
@@ -230,7 +230,7 @@ public class TankGame extends Application{
      * @param smerStrelyY pozice na Yté úsečce kterou urazí střela
      * @param modelTanku objekt ze kterého střela bude vycházet. Typ TankProtivnik
      */
-    public void strileniProtivnika(double smerStrelyX, double smerStrelyY, TankProtivnik modelTanku){
+    public void strileniProtivnika(double smerStrelyX, double smerStrelyY, TankHrac modelTanku){
         
         // jedna pro patronu druha pro kruh na kolize
         patronaProtivnika.setVisible(true);
